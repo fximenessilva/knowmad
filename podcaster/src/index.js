@@ -1,12 +1,37 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import * as React from "react";
+import { createRoot } from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 
-import App from "./App";
+import Wrapper from "components/utils/Wrapper";
+import ListProvider from "contexts/ListContext";
+import PodcastDetail from "components/views/podcastDetail/PodcastDetail";
+import PodcastAudio from "components/views/podcastAudio/PodcastAudio";
+import PodcastList from "components/views/podcastList/PodcastList";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+import "styles/app.scss";
 
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <ListProvider>
+        <PodcastList />
+      </ListProvider>
+    ),
+  },
+  {
+    path: "podcast/:podcastId",
+    element: <PodcastDetail />,
+  },
+]);
+
+createRoot(document.getElementById("root")).render(
+  <Wrapper>
+    <RouterProvider router={router} />
+  </Wrapper>
 );
