@@ -1,0 +1,16 @@
+@import "../../../styles/utils/mixins";
+
+.wrapper {
+  @include flex(row);
+  gap: 12px;
+  margin-left: auto;
+}
+
+.length {
+  padding: 8px 16px;
+  background-color: lightblue;
+  font-size: 14px;
+  border-radius: 8px;
+  min-width: 30px;
+  text-align: center;
+}
