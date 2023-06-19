@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import styles from "./noData.module.scss";
 
@@ -16,6 +17,11 @@ const NoData = ({
       </div>
     </div>
   );
+};
+
+NoData.propTypes = {
+  message: PropTypes.string,
+  linkContent: PropTypes.string,
 };
 
 export default NoData;

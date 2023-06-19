@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import styles from "./audioPlayer.module.scss";
 
@@ -14,6 +15,12 @@ const AudioPlayer = ({ title, description, audioSrc }) => {
       <audio controls src={audioSrc} />
     </div>
   );
+};
+
+AudioPlayer.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  audioSrc: PropTypes.string.isRequired,
 };
 
 export default AudioPlayer;

@@ -36,7 +36,7 @@ const PodcastAudio = () => {
 
   if (!!error && !loading) return <NoData />;
 
-  if (!loading)
+  if (cardProps.author && playerProps.title && !loading)
     return (
       <main className="detail-wrapper">
         <div className="card-wrapper">

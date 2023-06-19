@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import styles from "./listCard.module.scss";
 
@@ -14,6 +15,12 @@ const ListCard = ({ title, author, imgSrc }) => {
       </div>
     </div>
   );
+};
+
+ListCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
 };
 
 export default ListCard;

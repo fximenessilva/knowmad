@@ -1,13 +1,5 @@
 import * as React from "react";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  Route,
-  Link,
-  Outlet,
-  Routes,
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Wrapper from "components/utils/Wrapper";
 import ListProvider from "contexts/ListContext";
@@ -18,37 +10,6 @@ import PodcastAudio from "components/views/podcastAudio/PodcastAudio";
 import PodcastList from "components/views/podcastList/PodcastList";
 
 import "styles/app.scss";
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: (
-//       <ListProvider>
-//         <PodcastList />
-//       </ListProvider>
-//     ),
-//   },
-//   {
-//     path: "/podcast/:podcastId",
-//     element: (
-//       <DetailProvider>
-//         <PodcastDetail />
-//       </DetailProvider>
-//     ),
-//   },
-//   {
-//     path: "/podcast/:podcastId/episode/:episodeId",
-//     element: <PodcastAudio />,
-//   },
-// ]);
-
-// const App = () => {
-//   return (
-//     <Wrapper>
-//       <RouterProvider router={router} />
-//     </Wrapper>
-//   );
-// };
 
 function App() {
   return (

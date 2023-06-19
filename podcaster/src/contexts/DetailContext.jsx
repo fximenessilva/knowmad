@@ -49,8 +49,6 @@ const NAMESPACES = {
 const DetailProvider = ({ children }) => {
   const { podcastId, episodeId } = useParams();
 
-  console.log(useParams());
-
   const { setLoading } = useAppContext();
 
   const [state, dispatch] = useReducer(detailReducer, INITIAL_STATE);

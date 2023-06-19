@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import styles from "./detailCard.module.scss";
 
@@ -23,6 +24,14 @@ const DetailCard = ({ title, author, imgSrc, description, podcastId }) => {
       </div>
     </div>
   );
+};
+
+DetailCard.propTypes = {
+  title: PropTypes.string,
+  author: PropTypes.string,
+  imgSrc: PropTypes.string,
+  description: PropTypes.string,
+  podcastId: PropTypes.string.isRequired,
 };
 
 export default DetailCard;
