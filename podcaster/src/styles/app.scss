@@ -1,6 +1,10 @@
+@import "../styles/utils/mixins";
+@import "../styles/utils/variables";
+
 body {
   margin: 50px;
   font-family: sans-serif;
+  color: map-get($colors, raisin-black);
 }
 
 ul {
@@ -11,11 +15,51 @@ ul {
 
 a {
   text-decoration: none;
+  color: map-get($colors, silver-lake-blue);
+  transition: all 0.3s;
+  &:hover {
+    text-decoration: none;
+    color: map-get($colors, prussian-blue);
+  }
 }
 
 input[type="text"] {
   border-radius: 8px;
   outline: none;
-  border: 1px solid lightgray;
+  border: 1px solid map-get($colors, vista-blue);
   padding: 8px 12px;
+}
+
+.box-card {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.detail-wrapper {
+  @include flex(row);
+  gap: 48px;
+}
+
+.card-wrapper {
+  width: 22%;
+}
+
+.episodes {
+  width: calc(78% - 24px);
+  @include flex(column);
+  gap: 48px;
+}
+
+.episodes-wrapper {
+  height: 100%;
+}
+
+.episodes-count {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+audio {
+  width: 100%;
 }
