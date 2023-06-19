@@ -19,6 +19,12 @@ const detailReducer = (state, action) => {
         ...state,
         podcast: action.payload,
       };
+
+    case "SET_ERROR":
+      return {
+        ...state,
+        error: action.payload,
+      };
     case "SET_AUDIO_CONTENT":
       return {
         ...state,
@@ -33,6 +39,7 @@ const INITIAL_STATE = {
   loading: true,
   podcast: [],
   audio: {},
+  error: null,
 };
 
 const NAMESPACES = {
@@ -101,6 +108,7 @@ const DetailProvider = ({ children }) => {
         dispatch({ type: "SET_PODCAST", payload: results });
       } catch (error) {
         console.log(error);
+        dispatch({ type: "SET_ERROR", payload: error.message });
       } finally {
         dispatch({ type: "SET_LOADING", payload: false });
         setLoading(false);
