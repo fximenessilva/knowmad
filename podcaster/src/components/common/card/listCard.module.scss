@@ -1,0 +1,42 @@
+@import "../../../styles/utils/mixins";
+@import "../../../styles/utils/variables";
+
+.card {
+  @include flex(row);
+  height: 100%;
+  align-items: stretch;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.inner {
+  @include flex(column);
+  padding: 32px;
+  margin: -100px auto 0;
+  align-items: stretch;
+}
+
+.img {
+  border-radius: 50%;
+  position: relative;
+  border: 1px solid rgb(238, 238, 238);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+.title-wrapper {
+  @include flex(column);
+}
+
+.author,
+.title {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.title {
+  text-transform: uppercase;
+  color: map-get($colors, raisin-black);
+}
+.author {
+  color: map-get($colors, vista-blue);
+}
