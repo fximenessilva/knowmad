@@ -7,7 +7,7 @@
 .list-wrapper {
   @include flex(row);
   flex-wrap: wrap;
-  margin: 100px -12px 0;
+  margin: 88px -12px 0;
 }
 
 .item {
@@ -16,9 +16,12 @@
   align-items: stretch;
   flex: 0 0 auto;
   a {
-    // @include flex(row);
-    // height: 100%;
-    // align-items: stretch;
+    margin: 12px;
+    margin-bottom: 100px;
     width: 100%;
   }
+}
+
+.no-length {
+  margin: 0 12px;
 }

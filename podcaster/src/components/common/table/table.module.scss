@@ -1,0 +1,33 @@
+@import "../../../styles/utils/mixins";
+@import "../../../styles/utils/variables";
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.th {
+  background-color: map-get($colors, greyish);
+  text-transform: capitalize;
+  text-align: left;
+}
+
+.title {
+  // &:hover {
+  //   cursor: pointer;
+  // }
+}
+
+.th,
+.td {
+  border-bottom: 1px solid map-get($colors, light-grey);
+  padding: 8px;
+}
+
+.table tr:nth-child(even) {
+  background-color: map-get($colors, lightest-grey);
+}
+
+.table tr:hover {
+  background-color: map-get($colors, greyish);
+}
