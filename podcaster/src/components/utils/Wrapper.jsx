@@ -1,6 +1,6 @@
 import React from "react";
 
-import AppProvider from "contexts/AppContext";
+import AppProvider from "../../contexts/AppContext";
 import Header from "../common/header/Header";
 
 const Wrapper = ({ children }) => {

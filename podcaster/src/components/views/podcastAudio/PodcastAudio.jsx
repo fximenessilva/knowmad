@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 
 import DetailCard from "../../common/card/DetailCard";
 import AudioPlayer from "../../common/audioPlayer/AudioPlayer";

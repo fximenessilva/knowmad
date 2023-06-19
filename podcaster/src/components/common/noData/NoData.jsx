@@ -9,7 +9,7 @@ const NoData = ({
   linkContent = "<-- Back to podcasts list",
 }) => {
   return (
-    <div className={`${styles.wrapper} box-card`}>
+    <div data-testid="no-data" className={`${styles.wrapper} box-card`}>
       <div className={styles.inner}>
         <p className={styles.txt}>{message}</p>
 

@@ -8,11 +8,11 @@ import { useAppContext } from "../../../contexts/AppContext";
 const Header = () => {
   const { loading } = useAppContext();
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-testid="header">
       <h1>
         <Link to="/">Podcaster</Link>
       </h1>
-      {loading ? <Loading /> : null}
+      {loading ? <Loading data-testid="loading" /> : null}
     </header>
   );
 };

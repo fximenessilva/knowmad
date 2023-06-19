@@ -7,7 +7,7 @@ const SearchBar = (props) => {
   const { length, ...rest } = props;
 
   return (
-    <div className={styles.wrapper}>
+    <div data-testid="searchbar" className={styles.wrapper}>
       <span className={styles.length}>{length}</span>
       <input className={styles.input} {...rest} />
     </div>
