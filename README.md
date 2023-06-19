@@ -1,1 +1,42 @@
-# knowmad
+# Podcaster
+
+Podcaster is a small app that allows users to listen to podcasts
+
+## Installation
+
+Use the package manager to install the packages.
+
+```bash
+cd podcaster
+npm install
+```
+
+## Usage
+
+To build the package in development mode, use the following command:
+
+```
+npm start
+
+```
+
+To start the package in production mode, use the following command:
+
+```
+npm run build
+npx serve build
+```
+
+To run tests and collect coverage, use the following command:
+
+```
+npm test
+
+```
+
+To view the coverage report, use the following command after running tests:
+
+```
+npm run coverage
+
+```
