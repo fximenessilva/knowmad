@@ -19,6 +19,11 @@ const detailReducer = (state, action) => {
         ...state,
         podcast: action.payload,
       };
+    case "SET_AUDIO_CONTENT":
+      return {
+        ...state,
+        audio: action.payload,
+      };
     default:
       return { ...state };
   }
@@ -27,6 +32,7 @@ const detailReducer = (state, action) => {
 const INITIAL_STATE = {
   loading: true,
   podcast: [],
+  audio: {},
 };
 
 const NAMESPACES = {
@@ -34,7 +40,9 @@ const NAMESPACES = {
 };
 
 const DetailProvider = ({ children }) => {
-  const { podcastId } = useParams();
+  const { podcastId, episodeId } = useParams();
+
+  console.log(useParams());
 
   const { setLoading } = useAppContext();
 
@@ -47,6 +55,7 @@ const DetailProvider = ({ children }) => {
   useEffect(() => {
     setLoading(true);
 
+    // detail page
     const detailsList = localStorage.getItem(NAMESPACES.detail);
     const parsedList = JSON.parse(detailsList);
 
@@ -87,21 +96,6 @@ const DetailProvider = ({ children }) => {
               },
             });
           }
-          // impossible scenario
-          //   else {
-          //     // if the client has already visited the detail and the expire data is less than one day, renew expire date, set this detail in localStorage
-          //     const updatedObj = {
-          //       ...parsedList,
-          //       [podcastId]: {
-          //         ...parsedList[podcastId],
-          //         expire: {
-          //           initial: TIMESTAMP,
-          //           expiresOn: TIMESTAMP + ONE_DAY,
-          //         },
-          //       },
-          //     };
-          //     localStorage.setItem(NAMESPACES.detail, JSON.stringify(updatedObj));
-          //   }
         }
 
         dispatch({ type: "SET_PODCAST", payload: results });
@@ -134,6 +128,39 @@ const DetailProvider = ({ children }) => {
       } else {
         getDetail();
       }
+    }
+
+    // audio page
+    if (podcastId && episodeId) {
+      const getAudioDetails = async () => {
+        try {
+          // const res = await axios(
+          //   `https://api.allorigins.win/get?url=${encodeURIComponent(
+          //     "https://itunes.apple.com"
+          //   )}/lookup?id=${podcastId}&entity=podcastEpisode`
+          // );
+
+          // const res = await axios(
+          //   `https://api.allorigins.win/get?url=${encodeURIComponent(
+          //     "https://itunes.apple.com"
+          //   )}/lookup?id=${podcastId}&media=podcast &entity=podcast`
+          // );
+
+          const { data } = await axios(
+            `https://itunes.apple.com/lookup?id=${podcastId}&entity=podcastEpisode`
+          );
+
+          const audioDetail = data.results.find(
+            ({ trackId }) => trackId == episodeId
+          );
+          dispatch({ type: "SET_AUDIO_CONTENT", payload: audioDetail });
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      getAudioDetails();
     }
   }, []);
 
