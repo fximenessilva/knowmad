@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-import Noop from "components/utils/Noop";
-
+import Noop from "../../utils/Noop";
 import styles from "./table.module.scss";
 
 const Table = ({ columns, data }) => {
   return (
-    <table className={styles.table}>
+    <table className={styles.table} data-testid="table">
       <thead>
         <tr>
           {columns.map((column, index) => (
@@ -42,6 +42,18 @@ const Table = ({ columns, data }) => {
       </tbody>
     </table>
   );
+};
+
+Table.propTypes = {
+  columns: PropTypes.arrayOf(PropTypes.string).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.string,
+      title: PropTypes.string,
+      duration: PropTypes.string,
+      href: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 export default Table;

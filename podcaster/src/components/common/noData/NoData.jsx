@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import styles from "./noData.module.scss";
 
@@ -8,7 +9,7 @@ const NoData = ({
   linkContent = "<-- Back to podcasts list",
 }) => {
   return (
-    <div className={`${styles.wrapper} box-card`}>
+    <div data-testid="no-data" className={`${styles.wrapper} box-card`}>
       <div className={styles.inner}>
         <p className={styles.txt}>{message}</p>
 
@@ -16,6 +17,11 @@ const NoData = ({
       </div>
     </div>
   );
+};
+
+NoData.propTypes = {
+  message: PropTypes.string,
+  linkContent: PropTypes.string,
 };
 
 export default NoData;

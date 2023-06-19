@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 
 import DetailCard from "../../common/card/DetailCard";
 import AudioPlayer from "../../common/audioPlayer/AudioPlayer";
@@ -36,7 +35,7 @@ const PodcastAudio = () => {
 
   if (!!error && !loading) return <NoData />;
 
-  if (!loading)
+  if (cardProps.author && playerProps.title && !loading)
     return (
       <main className="detail-wrapper">
         <div className="card-wrapper">

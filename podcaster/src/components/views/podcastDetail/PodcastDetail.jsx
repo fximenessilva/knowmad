@@ -6,6 +6,7 @@ import { useDetailContext } from "../../../contexts/DetailContext";
 import { useAppContext } from "../../../contexts/AppContext";
 import DetailCard from "../../common/card/DetailCard";
 import Table from "../../common/table/Table";
+import NoData from "../../common/noData/NoData";
 
 const getTime = (milli) => milli && new Date(milli).toISOString().slice(11, 19);
 
@@ -18,17 +19,17 @@ const PodcastDetail = () => {
   const { state } = useDetailContext();
   const { loading } = useAppContext();
 
-  const detail = state.podcast;
+  const { podcast, error } = state;
 
   const cardProps = {
-    author: detail?.[0]?.collectionCensoredName,
-    title: detail?.[0]?.trackCensoredName,
-    description: detail?.[1]?.shortDescription || detail?.[1]?.description,
-    imgSrc: detail?.[0]?.artworkUrl100,
+    author: podcast?.[0]?.collectionCensoredName,
+    title: podcast?.[0]?.trackCensoredName,
+    description: podcast?.[1]?.shortDescription || podcast?.[1]?.description,
+    imgSrc: podcast?.[0]?.artworkUrl100,
     podcastId,
   };
 
-  const [firstElement, ...episodes] = detail;
+  const [firstElement, ...episodes] = podcast;
 
   const episodesLength = episodes.length;
 
@@ -38,6 +39,8 @@ const PodcastDetail = () => {
     duration: getTime(el.trackTimeMillis) || 0,
     href: `/podcast/${podcastId}/episode/${el.trackId}`,
   }));
+
+  if (!!error && !loading) return <NoData />;
 
   if (!loading)
     return (

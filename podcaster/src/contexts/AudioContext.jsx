@@ -67,7 +67,6 @@ const AudioProvider = ({ children }) => {
         const audioDetail = data.results.find(
           ({ trackId }) => trackId == episodeId
         );
-        console.log(audioDetail);
         dispatch({ type: "SET_AUDIO_CONTENT", payload: audioDetail });
       } catch (error) {
         console.log(error);

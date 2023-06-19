@@ -20,6 +20,7 @@
           "contexts": "./src/contexts"
         }
       }
-    ]
+    ],
+    ["@babel/plugin-proposal-decorators", { "legacy": true }]
   ]
 }
