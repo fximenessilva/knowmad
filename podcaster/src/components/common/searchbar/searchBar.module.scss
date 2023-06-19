@@ -1,0 +1,18 @@
+@import "../../../styles/utils/mixins";
+@import "../../../styles/utils/variables";
+
+.wrapper {
+  @include flex(row);
+  gap: 12px;
+  margin-left: auto;
+}
+
+.length {
+  padding: 8px 16px;
+  background-color: map-get($colors, silver-lake-blue);
+  color: map-get($colors, ghost-white);
+  font-size: 14px;
+  border-radius: 8px;
+  min-width: 30px;
+  text-align: center;
+}

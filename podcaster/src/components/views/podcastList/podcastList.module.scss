@@ -1,0 +1,27 @@
+@import "../../../styles/utils/mixins";
+
+.wrapper {
+  @include flex(column);
+}
+
+.list-wrapper {
+  @include flex(row);
+  flex-wrap: wrap;
+  margin: 88px -12px 0;
+}
+
+.item {
+  width: calc(100% / 4);
+  @include flex(row);
+  align-items: stretch;
+  flex: 0 0 auto;
+  a {
+    margin: 12px;
+    margin-bottom: 100px;
+    width: 100%;
+  }
+}
+
+.no-length {
+  margin: 0 12px;
+}

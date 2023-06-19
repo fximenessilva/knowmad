@@ -1,0 +1,5 @@
+@import "../../../styles/utils/mixins";
+
+.header {
+  @include flex(row, center, space-between);
+}
