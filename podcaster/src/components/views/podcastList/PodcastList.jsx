@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { useListContext } from "contexts/ListContext";
+import { useListContext } from "../../../contexts/ListContext";
 import { useAppContext } from "../../../contexts/AppContext";
 import ListCard from "../../common/card/ListCard";
 import SearchBar from "../../common/searchbar/SearchBar";

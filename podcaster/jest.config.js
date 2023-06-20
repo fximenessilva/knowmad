@@ -7,9 +7,5 @@ module.exports = {
   },
   collectCoverage: true,
   coverageReporters: ["json", "html"],
-  coveragePathIgnorePatterns: [
-    "./node_modules/",
-    "./src/index.js",
-    "./src/App.jsx",
-  ],
+  coveragePathIgnorePatterns: ["./node_modules/"],
 };
