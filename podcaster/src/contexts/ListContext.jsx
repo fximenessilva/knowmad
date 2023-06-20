@@ -36,10 +36,6 @@ const INITIAL_STATE = {
 const PODCASTS_ENDPOINT =
   "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json";
 
-const a = `https://api.allorigins.win/get?url=${encodeURIComponent(
-  "https://itunes.apple.com"
-)}`;
-
 const NAMESPACES = { expiry: "podcast_expiry_date", list: "podcasts_list" };
 
 const ONE_DAY = 1000 * 60 * 60 * 24; // one day

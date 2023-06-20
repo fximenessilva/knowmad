@@ -140,18 +140,6 @@ const DetailProvider = ({ children }) => {
     if (podcastId && episodeId) {
       const getAudioDetails = async () => {
         try {
-          // const res = await axios(
-          //   `https://api.allorigins.win/get?url=${encodeURIComponent(
-          //     "https://itunes.apple.com"
-          //   )}/lookup?id=${podcastId}&entity=podcastEpisode`
-          // );
-
-          // const res = await axios(
-          //   `https://api.allorigins.win/get?url=${encodeURIComponent(
-          //     "https://itunes.apple.com"
-          //   )}/lookup?id=${podcastId}&media=podcast &entity=podcast`
-          // );
-
           const { data } = await axios(
             `https://itunes.apple.com/lookup?id=${podcastId}&entity=podcastEpisode`
           );
