@@ -11,6 +11,17 @@ cd podcaster
 npm install
 ```
 
+
+## Architecture
+
+The Podcaster app follows a component-based architecture using the following technologies:
+
+React: A JavaScript library for building user interfaces.
+Context API: A built-in feature in React for managing global state and data sharing between components.
+useReducer: A React hook for managing complex state logic
+
+The app's architecture promotes modularity, reusability, and maintainability of the codebase. Components are structured to handle specific functionality, and the global state management provided by the Context API and useReducer ensures efficient management of the app's state.
+
 ## Usage
 
 To build the package in development mode, use the following command:
