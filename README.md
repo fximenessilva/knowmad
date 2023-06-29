@@ -13,6 +13,7 @@ The Podcaster app follows a logical directory structure that promotes organizati
     * **views**: Contains the main views or pages of the app.
   * **contexts**: Holds the Context API related files, including context providers and consumers.
   * **styles**: Contains global stylesheets for styling the app.
+  * **utils**: Holds utility functions, helper files or constants used throughout the app.
 
 
 ## Architecture
