@@ -2,6 +2,8 @@ import React, { createContext, useContext, useReducer, useEffect } from "react";
 import axios from "axios";
 
 import { useAppContext } from "./AppContext";
+import { NAMESPACES } from "../utils/constants";
+import { getter, setter } from "../utils/localStorageHelpers";
 
 const ListContext = createContext({});
 
@@ -36,8 +38,6 @@ const INITIAL_STATE = {
 const PODCASTS_ENDPOINT =
   "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json";
 
-const NAMESPACES = { expiry: "podcast_expiry_date", list: "podcasts_list" };
-
 const ONE_DAY = 1000 * 60 * 60 * 24; // one day
 
 const ListProvider = ({ children }) => {
@@ -57,13 +57,10 @@ const ListProvider = ({ children }) => {
     setLoading(true);
 
     const setExpiration = () => {
-      localStorage.setItem(
-        NAMESPACES.expiry,
-        JSON.stringify({
-          initial: TIMESTAMP,
-          expiresOn: TIMESTAMP + ONE_DAY,
-        })
-      );
+      setter(NAMESPACES.expiry, {
+        initial: TIMESTAMP,
+        expiresOn: TIMESTAMP + ONE_DAY,
+      });
     };
     const getPodcasts = async () => {
       try {
@@ -71,7 +68,7 @@ const ListProvider = ({ children }) => {
         const {
           feed: { entry },
         } = data;
-        localStorage.setItem(NAMESPACES.list, JSON.stringify(entry));
+        setter(NAMESPACES.list, entry);
         setPodcasts(entry);
         console.log("API REQUEST", { podcasts: entry });
       } catch (error) {
@@ -82,19 +79,17 @@ const ListProvider = ({ children }) => {
       }
     };
 
-    if (!JSON.parse(localStorage.getItem(NAMESPACES.expiry))) {
+    if (!getter(NAMESPACES.expiry)) {
       setExpiration();
       getPodcasts();
     } else {
-      const EXPIRE_DATE = JSON.parse(
-        localStorage.getItem(NAMESPACES.expiry)
-      ).expiresOn;
+      const EXPIRE_DATE = getter(NAMESPACES.expiry).expiresOn;
 
       if (Date.now() > EXPIRE_DATE) {
         setExpiration();
         getPodcasts();
       } else {
-        const LIST = JSON.parse(localStorage.getItem(NAMESPACES.list));
+        const LIST = getter(NAMESPACES.list);
         setPodcasts(LIST);
         setLoading(false);
       }

@@ -1,16 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import moment from "moment";
 
 import { useDetailContext } from "../../../contexts/DetailContext";
 import { useAppContext } from "../../../contexts/AppContext";
 import DetailCard from "../../common/card/DetailCard";
 import Table from "../../common/table/Table";
 import NoData from "../../common/noData/NoData";
-
-const getTime = (milli) => milli && new Date(milli).toISOString().slice(11, 19);
-
-const formatDate = (date) => moment(date).format("DD/MM/YYYY");
+import { formatDate, getTime } from "../../../utils";
 
 const columns = ["title", "date", "duration"];
 

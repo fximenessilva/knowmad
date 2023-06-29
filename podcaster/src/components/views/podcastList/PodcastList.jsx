@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 
 import { useListContext } from "../../../contexts/ListContext";
@@ -23,7 +23,10 @@ const PodcastList = () => {
     }
   };
 
-  const list = podcasts.filter(filterCallBack);
+  const list = useMemo(
+    () => podcasts.filter(filterCallBack),
+    [searchTerm, podcasts]
+  );
 
   return (
     <div className={styles.wrapper}>

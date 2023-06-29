@@ -6,6 +6,8 @@ import AudioPlayer from "../../common/audioPlayer/AudioPlayer";
 import NoData from "../../common/noData/NoData";
 import { useAppContext } from "../../../contexts/AppContext";
 import { useAudioContext } from "../../../contexts/AudioContext";
+import { getter } from "../../../utils/localStorageHelpers";
+import { NAMESPACES } from "../../../utils/constants";
 
 const PodcastAudio = () => {
   const { podcastId } = useParams();
@@ -16,8 +18,7 @@ const PodcastAudio = () => {
 
   const { audio, error } = state;
 
-  const detail = JSON.parse(localStorage.getItem("podcasts_details"))[podcastId]
-    .data;
+  const detail = getter(NAMESPACES.detail)[podcastId].data;
 
   const cardProps = {
     author: detail?.[0]?.collectionCensoredName,

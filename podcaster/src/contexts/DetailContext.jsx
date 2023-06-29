@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { getter, setter } from "../utils/localStorageHelpers";
+import { NAMESPACES } from "../utils/constants";
 
 import { useAppContext } from "./AppContext";
 
@@ -42,10 +44,6 @@ const INITIAL_STATE = {
   error: null,
 };
 
-const NAMESPACES = {
-  detail: "podcasts_details",
-};
-
 const DetailProvider = ({ children }) => {
   const { podcastId, episodeId } = useParams();
 
@@ -62,11 +60,7 @@ const DetailProvider = ({ children }) => {
 
     // detail page
     const detailsList = localStorage.getItem(NAMESPACES.detail);
-    const parsedList = JSON.parse(detailsList);
-
-    const localStorageSetter = (key, value) => {
-      localStorage.setItem(key, JSON.stringify(value));
-    };
+    const parsedList = getter(NAMESPACES.detail);
 
     const getDetail = async () => {
       const PODCAST_ENDPOINT = `https://itunes.apple.com/lookup?id=${podcastId}&entity=podcastEpisode`;
@@ -77,7 +71,7 @@ const DetailProvider = ({ children }) => {
 
         // if it is the first time a client visits one detail, set this detail in localStorage
         if (detailsList === null) {
-          localStorageSetter(NAMESPACES.detail, {
+          setter(NAMESPACES.detail, {
             [podcastId]: {
               data: results,
               expire: {
@@ -90,7 +84,7 @@ const DetailProvider = ({ children }) => {
           if (!(podcastId in parsedList)) {
             // if the client hasn't visited the detail, set this detail in localStorage
 
-            localStorageSetter(NAMESPACES.detail, {
+            setter(NAMESPACES.detail, {
               ...parsedList,
               [podcastId]: {
                 data: results,
